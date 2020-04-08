@@ -1,24 +1,24 @@
 function subscriber_speed_motorArD_callback(msg)
 	spd = msg.data
-	sim.setJointTargetVelocity(motorArD, spd)
+	sim.setJointTargetVelocity(motorArD, -spd)
 	sim.addStatusbarMessage('speed_motorArD subscriber received : spd ='..spd)
 end
 
 function subscriber_speed_motorArG_callback(msg)
 	spd = msg.data
-	sim.setJointTargetVelocity(motorArG, spd)
+	sim.setJointTargetVelocity(motorArG, -spd)
 	sim.addStatusbarMessage('speed_motorArG subscriber received : spd ='..spd)
 end
 
 function subscriber_speed_motorAvD_callback(msg)
 	spd = msg.data
-	sim.setJointTargetVelocity(motorAvD, spd)
+	sim.setJointTargetVelocity(motorAvD, -spd)
 	sim.addStatusbarMessage('speed_motorAvD subscriber received : spd ='..spd)
 end
 
 function subscriber_speed_motorAvG_callback(msg)
 	spd = msg.data
-	sim.setJointTargetVelocity(motorAvG, spd)
+	sim.setJointTargetVelocity(motorAvG, -spd)
 	sim.addStatusbarMessage('speed_motorAvG subscriber received : spd ='..spd)
 end
 
