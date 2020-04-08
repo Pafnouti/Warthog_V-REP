@@ -1,17 +1,25 @@
-function subscriber_speed_motor_callback(msg)
+function subscriber_speed_motorArD_callback(msg)
 	spd = msg.data
-	sim.setJointTargetVelocity(Motor, spd)
-	sim.addStatusbarMessage('speed_motor subscriber received : spd ='..spd)
+	sim.setJointTargetVelocity(motorArD, spd)
+	sim.addStatusbarMessage('speed_motorArD subscriber received : spd ='..spd)
 end
 
-function subscriber_steer_angle_callback(msg)
-	-- steer must be € [-0.5, 0.5]
-	-- steer <0 --> turn right
-	-- steer >0 --> turn left
-	steer = msg.data
-	sim.setJointTargetPosition(SteerRight, steer)
-	sim.setJointTargetPosition(SteerLeft, steer)	
-	sim.addStatusbarMessage('cmd_steer subscriber receiver : steer ='..steer)
+function subscriber_speed_motorArG_callback(msg)
+	spd = msg.data
+	sim.setJointTargetVelocity(motorArG, spd)
+	sim.addStatusbarMessage('speed_motorArG subscriber received : spd ='..spd)
+end
+
+function subscriber_speed_motorAvD_callback(msg)
+	spd = msg.data
+	sim.setJointTargetVelocity(motorAvD, spd)
+	sim.addStatusbarMessage('speed_motorAvD subscriber received : spd ='..spd)
+end
+
+function subscriber_speed_motorAvG_callback(msg)
+	spd = msg.data
+	sim.setJointTargetVelocity(motorAvG, spd)
+	sim.addStatusbarMessage('speed_motorAvG subscriber received : spd ='..spd)
 end
 
 function getPose(objectName)
@@ -46,19 +54,25 @@ end
 
 function sysCall_init()
 	-- The child script initialization
-	objectName = "Chassis"
+	objectName = "chassis"
 	objectHandle = sim.getObjectHandle(objectName)
 	-- get left and right motors handles
-	Motor = sim.getObjectHandle("RearAxis")
-	SteerRight = sim.getObjectHandle("SteeringRight")
-	SteerLeft = sim.getObjectHandle("SteeringLeft")	
+	motorArD = sim.getObjectHandle("motorArD")
+	motorAvD = sim.getObjectHandle("motorAvD")
+	motorArG = sim.getObjectHandle("motorArG")
+	motorAvG = sim.getObjectHandle("motorAvG")
+	pivotD = sim.getObjectHandle("pivotD")
+	pivotG = sim.getObjectHandle("pivotG")	
+
 	rosInterfacePresent = simROS
 	-- Prepare the publishers and subscribers :
 	if rosInterfacePresent then
 	  publisher1 = simROS.advertise('/simulationTime', 'std_msgs/Float32')
 	  publisher2 = simROS.advertise('/pose', 'geometry_msgs/Pose')
-	  subscriber1 = simROS.subscribe('/vrep_speed_motor', 'std_msgs/Float32', 'subscriber_speed_motor_callback')
-	  subscriber2 = simROS.subscribe('/vrep_steer_angle', 'std_msgs/Float32', 'subscriber_steer_angle_callback')
+	  subscriber1 = simROS.subscribe('/vrep_speed_motorArD', 'std_msgs/Float32', 'subscriber_speed_motorArD_callback')
+	  subscriber2 = simROS.subscribe('/vrep_speed_motorArG', 'std_msgs/Float32', 'subscriber_speed_motorArG_callback')
+	  subscriber3 = simROS.subscribe('/vrep_speed_motorAvD', 'std_msgs/Float32', 'subscriber_speed_motorAvD_callback')
+	  subscriber4 = simROS.subscribe('/vrep_speed_motorAvG', 'std_msgs/Float32', 'subscriber_speed_motorAvG_callback')
 	end
 end
 
@@ -67,7 +81,7 @@ function sysCall_actuation()
 	if rosInterfacePresent then
 	  -- publish time and pose topics
 	  simROS.publish(publisher1, {data=sim.getSimulationTime()})
-	  simROS.publish(publisher2, getPose("Chassis"))
+	  simROS.publish(publisher2, getPose("chassis"))
 	  -- send a TF
 	  simROS.sendTransform(getTransformStamped(objectHandle, objectName, -1, 'world'))
 	  -- To send several transforms at once, use simROS.sendTransforms instead
@@ -81,5 +95,7 @@ function sysCall_cleanup()
 		simROS.shutdownPublisher(publisher2)
 		simROS.shutdownSubscriber(subscriber1)
 		simROS.shutdownSubscriber(subscriber2)
+		simROS.shutdownSubscriber(subscriber3)
+		simROS.shutdownSubscriber(subscriber4)
 	end
 end
