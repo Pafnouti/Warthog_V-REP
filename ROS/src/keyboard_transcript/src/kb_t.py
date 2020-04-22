@@ -13,16 +13,16 @@ def callback(data):
     ang = data.angular.z
 
     avgf = Float32()
-    avgf.data = 0.3*(2*lin - ang)
+    avgf.data = 1.5*(2*lin - ang)
 
     avdf = Float32()
-    avdf.data = 0.3*(2*lin + ang)
+    avdf.data = 1.5*(2*lin + ang)
 
     argf = Float32()
-    argf.data = 0.3*(2*lin - ang)
+    argf.data = 1.5*(2*lin - ang)
 
     ardf = Float32()
-    ardf.data = 0.3*(2*lin + ang)
+    ardf.data = 1.5*(2*lin + ang)
 
     avg.publish(avgf)
     avd.publish(avdf)
