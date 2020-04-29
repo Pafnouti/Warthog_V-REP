@@ -1,0 +1,18 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "",
+        "limitSymbolsToIncludedHeaders": true
+      },
+      "includePath": [
+        "/opt/ros/melodic/include/**",
+        "/home/corentin/Documents/Cours/2A/UE4.2_Simulation/Warthog_V-REP/ROS/src/keyboard_transcript/include/**",
+        "/home/corentin/workspaceRos/src/tp1/include/**",
+        "/home/corentin/workspaceRos/src/tp2/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS"
+    }
+  ]
+}

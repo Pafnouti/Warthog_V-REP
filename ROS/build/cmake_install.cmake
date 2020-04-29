@@ -131,6 +131,7 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/corentin/Documents/Cours/2A/UE4.2_Simulation/Warthog_V-REP/ROS/build/gtest/cmake_install.cmake")
+  include("/home/corentin/Documents/Cours/2A/UE4.2_Simulation/Warthog_V-REP/ROS/build/buoyancy_force/cmake_install.cmake")
   include("/home/corentin/Documents/Cours/2A/UE4.2_Simulation/Warthog_V-REP/ROS/build/keyboard_transcript/cmake_install.cmake")
 
 endif()
