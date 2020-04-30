@@ -1,8 +1,4 @@
 print "Working..."
-AvG_force = {0,0,0}
-AvD_force = {0,0,0}
-ArG_force = {0,0,0}
-ArD_force = {0,0,0}
 
 function subscriber_speed_motorArD_callback(msg)
 	spd = msg.data
