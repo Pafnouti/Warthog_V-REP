@@ -1,0 +1,4 @@
+<launch>
+   <node pkg="keyboard_transcript" type="kb_t" name="keyboard_transcript">
+   <node pkg="key_teleop" type="key_teleop" name="key_teleop">
+</launch>

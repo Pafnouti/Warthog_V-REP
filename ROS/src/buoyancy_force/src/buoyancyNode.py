@@ -6,12 +6,18 @@ from std_msgs.msg import Float32
 import numpy as np
 from scipy.spatial.transform import Rotation as R
 
-K = 10
+K = 10 # 10
+
+def noForce():
+    force = Twist()
+    return force
 
 def calcForce(data):
     pos = data.position.z
     r = R.from_quat([data.orientation.x, data.orientation.y, data.orientation.z, data.orientation.w])
     force = Twist()
+    #print (data)
+    #print ("Euler",r.as_euler('zyx', degrees=True),"pos",pos)
 
     f = np.array([0,0,0])
 
@@ -34,23 +40,35 @@ def calcForce(data):
     force.linear.x = tr_f[0]
     force.linear.y = tr_f[1]
     force.linear.z = tr_f[2]
-
+    """
+    force.linear.x = 0.0
+    if pos < 0.0:
+        force.linear.x = 2000.0
+        
+    force.linear.y = 0.0
+    force.linear.z = 0.0
+    """
+    #print (force)
+    
     return force
 
 def callbackAvD(data):
     force = calcForce(data)
-    forceAvG_pub.publish(force)
+    forceAvD_pub.publish(force)
 
 def callbackArD(data):
     force = calcForce(data)
+    #force = noForce()
     forceArD_pub.publish(force)
 
 def callbackAvG(data):
     force = calcForce(data)
+    #force = noForce()
     forceAvG_pub.publish(force)
 
 def callbackArG(data):
     force = calcForce(data)
+    #force = noForce()
     forceArG_pub.publish(force)
 
 def transcript():
