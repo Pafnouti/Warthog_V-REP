@@ -1,4 +1,4 @@
-prefix=/home/corentin/Documents/Cours/2A/UE4.2_Simulation/Warthog_V-REP/ROS/install
+prefix=/home/newubu/Robotics/Warthog/studs/Pafnouti/Warthog_V-REP/ROS/install
 
 Name: buoyancy_force
 Description: Description of buoyancy_force

@@ -1,0 +1,8 @@
+<launch>
+   <node pkg="buoyancy_force" type="buoyancyNode.py" name="buoyancy">
+   </node> 
+   <node pkg="keyboard_transcript" type="kb_t.py" name="keyboard_transcript">
+   </node> 
+   <node launch-prefix="gnome-terminal --window -e" pkg="key_teleop" type="key_teleop.py" name="key_teleop" output="screen">
+   </node>
+</launch>

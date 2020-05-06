@@ -67,14 +67,14 @@ set(buoyancy_force_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("FALSE" STREQUAL "TRUE")
-  set(buoyancy_force_SOURCE_PREFIX /home/corentin/Documents/Cours/2A/UE4.2_Simulation/Warthog_V-REP/ROS/src/buoyancy_force)
-  set(buoyancy_force_DEVEL_PREFIX /home/corentin/Documents/Cours/2A/UE4.2_Simulation/Warthog_V-REP/ROS/devel)
+  set(buoyancy_force_SOURCE_PREFIX /home/newubu/Robotics/Warthog/studs/Pafnouti/Warthog_V-REP/ROS/src/buoyancy_force)
+  set(buoyancy_force_DEVEL_PREFIX /home/newubu/Robotics/Warthog/studs/Pafnouti/Warthog_V-REP/ROS/devel)
   set(buoyancy_force_INSTALL_PREFIX "")
   set(buoyancy_force_PREFIX ${buoyancy_force_DEVEL_PREFIX})
 else()
   set(buoyancy_force_SOURCE_PREFIX "")
   set(buoyancy_force_DEVEL_PREFIX "")
-  set(buoyancy_force_INSTALL_PREFIX /home/corentin/Documents/Cours/2A/UE4.2_Simulation/Warthog_V-REP/ROS/install)
+  set(buoyancy_force_INSTALL_PREFIX /home/newubu/Robotics/Warthog/studs/Pafnouti/Warthog_V-REP/ROS/install)
   set(buoyancy_force_PREFIX ${buoyancy_force_INSTALL_PREFIX})
 endif()
 
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/corentin/Documents/Cours/2A/UE4.2_Simulation/Warthog_V-REP/ROS/install/lib;/home/corentin/workspaceRos/devel/lib;/opt/ros/melodic/lib)
+    foreach(path /home/newubu/Robotics/Warthog/studs/Pafnouti/Warthog_V-REP/ROS/install/lib;/home/newubu/Robotics/Warthog/studs/Pafnouti/Warthog_V-REP/ROS/devel/lib;/opt/ros/melodic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

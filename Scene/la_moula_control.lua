@@ -133,11 +133,24 @@ function sysCall_actuation()
 	  -- send a TF
 	  simROS.sendTransform(getTransformStamped(objectHandle, objectName, -1, 'world'))
 	  -- To send several transforms at once, use simROS.sendTransforms instead
-	  sim.addForce(bodyRAvG, pos, AvG_force)
-	  sim.addForce(bodyRAvD, pos, AvD_force)
-	  sim.addForce(bodyRArG, pos, ArG_force)
-	  sim.addForce(bodyRArD, pos, ArD_force)
-
+	  pos = {0,0,0}
+	  --AvG_force = {0,0,100.0}
+	  --AvD_force = {0,0,100.0}
+	  --ArG_force = {0,0,100.0}
+	  --ArD_force = {0,0,100.0}
+	  if AvG_force~= nil then 
+	     sim.addForce(bodyRAvG, pos, AvG_force)
+	  end
+	  if AvD_force~= nil then 
+	     print (bodyRAvD,pos,AvD_force)
+	     sim.addForce(bodyRAvD, pos, AvD_force)
+	  end
+	  if ArG_force~= nil then 
+	     sim.addForce(bodyRArG, pos, ArG_force)
+	  end
+	  if ArD_force~= nil then 
+	     sim.addForce(bodyRArD, pos, ArD_force)
+	  end
 	end
 end
 

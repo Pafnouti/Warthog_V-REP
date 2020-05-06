@@ -1,2 +1,2 @@
 buoyancy_force:keyboard_transcript
--DCATKIN_DEVEL_PREFIX=/home/corentin/Documents/Cours/2A/UE4.2_Simulation/Warthog_V-REP/ROS/devel -DCMAKE_INSTALL_PREFIX=/home/corentin/Documents/Cours/2A/UE4.2_Simulation/Warthog_V-REP/ROS/install -G Unix Makefiles
+-DCATKIN_DEVEL_PREFIX=/home/newubu/Robotics/Warthog/studs/Pafnouti/Warthog_V-REP/ROS/devel -DCMAKE_INSTALL_PREFIX=/home/newubu/Robotics/Warthog/studs/Pafnouti/Warthog_V-REP/ROS/install -G Unix Makefiles
